@@ -63,6 +63,8 @@ const Signup = async (req, res) => {
             res.cookie(COOKIE_NAME, token, {
                 path: "/", expires,
                 signed: true,
+                sameSite:'none',
+                secure:true
             })
 
             return res.status(200).json({ message: "OK" })
@@ -97,6 +99,8 @@ const logout = (req, res) => {
         res.clearCookie(COOKIE_NAME, {
             path: "/",
             signed: true,
+            sameSite:'none',
+            secure:true
         })
         return res.status(200).json({ message: "OK" })
     } catch (err) {
